@@ -1,0 +1,191 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    height: 100vh;
+    perspective: 20em;
+    background:wheat;
+  }
+  
+  div,
+  :before {
+    position: absolute;
+    transform-style: preserve-3d;
+  }
+  
+  .a3d {
+    top: 50%;
+    left: 50%;
+    animation: r 1.5s linear infinite;
+  }
+  
+  @keyframes r {
+    to {
+      transform: rotateY(1turn);
+    }
+  }
+  .s3d {
+    --rdt: 0;
+    --ani-exp: exp3d 9s ease-in calc(var(--rdt) *-9s) infinite;
+    animation: var(--ani-exp);
+  }
+  .s3d:nth-child(2) {
+    --rdt: 0.5;
+  }
+  .s3d:nth-child(2) .s3gon {
+    --z-ini: 6.04609vmin;
+    --f-ini: 1;
+  }
+  .s3d:nth-child(2) .s4gon {
+    --z-ini: 6.47214vmin;
+    --f-ini: 0, 1;
+  }
+  .s3d:nth-child(2) .s5gon {
+    --z-ini: 7.60845vmin;
+    --f-ini: 0;
+  }
+  
+  .s2d {
+    --b2: calc(1 - var(--b1));
+    --s1: calc(1 - 2 * var(--b1));
+    --s: calc(-1 * var(--s0) * var(--s1));
+    --o: 0;
+    --p: calc(var(--s0) * var(--s0));
+    --q: calc(1 - var(--p));
+    margin: calc(-1 * var(--r2d));
+    padding: var(--r2d);
+    --z-fin: calc(var(--z-mid) + 13vmin);
+    --f-mid: 1;
+    --f-fin: 0.2;
+    --dir: rotatey(calc(var(--my) *72deg)) rotatex(calc(var(--s0) * (var(--b2) * var(--ax0) + var(--b1) * var(--ax1)))) var(--rx,  );
+    transform: var(--dir) translatez(var(--z-ini)) scale(var(--f-ini));
+    filter: brightness(calc(1.375 + var(--s0) * 0.1));
+    clip-path: polygon(var(--p-ini));
+    animation: var(--ani-exp);
+    animation-name: exp2d, fade, hole;
+  }
+  .s2d:not(.cup.s5gon):before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(191, 36, 211, 0.85);
+    animation: shade 0.75s linear calc(-0.75s - var(--my) *0.3s) infinite alternate;
+    content: "";
+  }
+  
+  .s3gon {
+    --r2d: 4.6188vmin;
+    --my: calc(var(--j) + 0.25 * (var(--s0) - 1));
+    --ax0: 10.81232deg;
+    --ax1: 52.62263deg;
+    --z-ini: 11.21007vmin;
+    --z-mid: 17.25616vmin;
+    --f-ini: 0;
+    background: red;
+    --p-ini: calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% * (1 + 0.86603)) calc(50% * (1 + var(--s) *0.5)), calc(50% * (1 + -0.86603)) calc(50% * (1 + var(--s) *0.5)), calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% + (50% - 50%) *0) calc( 50% + (50% - 50%) * var(--s) *-1 ), calc(50% + (50% - 50%) *-0.86603) calc( 50% + (50% - 50%) * var(--s) *0.5 ), calc(50% + (50% - 50%) *0.86603) calc( 50% + (50% - 50%) * var(--s) *0.5 ), calc(50% + (50% - 50%) *0) calc( 50% + (50% - 50%) * var(--s) *-1 );
+    --p-mid: calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% * (1 + 0.86603)) calc(50% * (1 + var(--s) *0.5)), calc(50% * (1 + -0.86603)) calc(50% * (1 + var(--s) *0.5)), calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% + (50% - 5px) *0) calc( 50% + (50% - 5px) * var(--s) *-1 ), calc(50% + (50% - 5px) *-0.86603) calc( 50% + (50% - 5px) * var(--s) *0.5 ), calc(50% + (50% - 5px) *0.86603) calc( 50% + (50% - 5px) * var(--s) *0.5 ), calc(50% + (50% - 5px) *0) calc( 50% + (50% - 5px) * var(--s) *-1 );
+    --p-fin: calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% * (1 + 0.86603)) calc(50% * (1 + var(--s) *0.5)), calc(50% * (1 + -0.86603)) calc(50% * (1 + var(--s) *0.5)), calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% + (50% - 50%) *0) calc( 50% + (50% - 50%) * var(--s) *-1 ), calc(50% + (50% - 50%) *-0.86603) calc( 50% + (50% - 50%) * var(--s) *0.5 ), calc(50% + (50% - 50%) *0.86603) calc( 50% + (50% - 50%) * var(--s) *0.5 ), calc(50% + (50% - 50%) *0) calc( 50% + (50% - 50%) * var(--s) *-1 );
+  }
+  
+  .s4gon {
+    --s: 1;
+    --r2d: 5.65685vmin;
+    --my: calc( var(--j) + 0.25 * (var(--s) - 1 - var(--q)) + 0.5 * (var(--b2) + var(--o, 0)) );
+    --ax0: 31.71747deg;
+    --ax1: 58.28253deg;
+    --rx: rotate(calc( var(--b2) * (var(--q) * (1 - 2 * var(--o)) *31.71747deg + var(--p) * 90deg) ));
+    --z-ini: 10.47214vmin;
+    --z-mid: 16.94427vmin;
+    --f-ini: 1, 0;
+    background: greenyellow;
+    --p-ini: calc(50% * (1 + 0.70711)) calc(50% * (1 + var(--s) *-0.70711)), calc(50% * (1 + 0.70711)) calc(50% * (1 + var(--s) *0.70711)), calc(50% * (1 + -0.70711)) calc(50% * (1 + var(--s) *0.70711)), calc(50% * (1 + -0.70711)) calc(50% * (1 + var(--s) *-0.70711)), calc(50% * (1 + 0.70711)) calc(50% * (1 + var(--s) *-0.70711)), calc(50% + (50% - 50%) *0.70711) calc( 50% + (50% - 50%) * var(--s) *-0.70711 ), calc(50% + (50% - 50%) *-0.70711) calc( 50% + (50% - 50%) * var(--s) *-0.70711 ), calc(50% + (50% - 50%) *-0.70711) calc( 50% + (50% - 50%) * var(--s) *0.70711 ), calc(50% + (50% - 50%) *0.70711) calc( 50% + (50% - 50%) * var(--s) *0.70711 ), calc(50% + (50% - 50%) *0.70711) calc( 50% + (50% - 50%) * var(--s) *-0.70711 );
+    --p-mid: calc(50% * (1 + 0.70711)) calc(50% * (1 + var(--s) *-0.70711)), calc(50% * (1 + 0.70711)) calc(50% * (1 + var(--s) *0.70711)), calc(50% * (1 + -0.70711)) calc(50% * (1 + var(--s) *0.70711)), calc(50% * (1 + -0.70711)) calc(50% * (1 + var(--s) *-0.70711)), calc(50% * (1 + 0.70711)) calc(50% * (1 + var(--s) *-0.70711)), calc(50% + (50% - 5px) *0.70711) calc( 50% + (50% - 5px) * var(--s) *-0.70711 ), calc(50% + (50% - 5px) *-0.70711) calc( 50% + (50% - 5px) * var(--s) *-0.70711 ), calc(50% + (50% - 5px) *-0.70711) calc( 50% + (50% - 5px) * var(--s) *0.70711 ), calc(50% + (50% - 5px) *0.70711) calc( 50% + (50% - 5px) * var(--s) *0.70711 ), calc(50% + (50% - 5px) *0.70711) calc( 50% + (50% - 5px) * var(--s) *-0.70711 );
+    --p-fin: calc(50% * (1 + 0.70711)) calc(50% * (1 + var(--s) *-0.70711)), calc(50% * (1 + 0.70711)) calc(50% * (1 + var(--s) *0.70711)), calc(50% * (1 + -0.70711)) calc(50% * (1 + var(--s) *0.70711)), calc(50% * (1 + -0.70711)) calc(50% * (1 + var(--s) *-0.70711)), calc(50% * (1 + 0.70711)) calc(50% * (1 + var(--s) *-0.70711)), calc(50% + (50% - 50%) *0.70711) calc( 50% + (50% - 50%) * var(--s) *-0.70711 ), calc(50% + (50% - 50%) *-0.70711) calc( 50% + (50% - 50%) * var(--s) *-0.70711 ), calc(50% + (50% - 50%) *-0.70711) calc( 50% + (50% - 50%) * var(--s) *0.70711 ), calc(50% + (50% - 50%) *0.70711) calc( 50% + (50% - 50%) * var(--s) *0.70711 ), calc(50% + (50% - 50%) *0.70711) calc( 50% + (50% - 50%) * var(--s) *-0.70711 );
+  }
+  
+  .s5gon {
+    --r2d: 6.80521vmin;
+    --my: calc((var(--j) + 0.25 * (var(--s0) + 1)));
+    --ax0: 26.56505deg;
+    --ax1: 90deg;
+    --z-ini: 8.90813vmin;
+    --z-mid: 16.51658vmin;
+    --f-ini: 1;
+    background: orangered;
+    --p-ini: calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% * (1 + 0.95106)) calc(50% * (1 + var(--s) *-0.30902)), calc(50% * (1 + 0.58779)) calc(50% * (1 + var(--s) *0.80902)), calc(50% * (1 + -0.58779)) calc(50% * (1 + var(--s) *0.80902)), calc(50% * (1 + -0.95106)) calc(50% * (1 + var(--s) *-0.30902)), calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% + (50% - 50%) *0) calc( 50% + (50% - 50%) * var(--s) *-1 ), calc(50% + (50% - 50%) *-0.95106) calc( 50% + (50% - 50%) * var(--s) *-0.30902 ), calc(50% + (50% - 50%) *-0.58779) calc( 50% + (50% - 50%) * var(--s) *0.80902 ), calc(50% + (50% - 50%) *0.58779) calc( 50% + (50% - 50%) * var(--s) *0.80902 ), calc(50% + (50% - 50%) *0.95106) calc( 50% + (50% - 50%) * var(--s) *-0.30902 ), calc(50% + (50% - 50%) *0) calc( 50% + (50% - 50%) * var(--s) *-1 );
+    --p-mid: calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% * (1 + 0.95106)) calc(50% * (1 + var(--s) *-0.30902)), calc(50% * (1 + 0.58779)) calc(50% * (1 + var(--s) *0.80902)), calc(50% * (1 + -0.58779)) calc(50% * (1 + var(--s) *0.80902)), calc(50% * (1 + -0.95106)) calc(50% * (1 + var(--s) *-0.30902)), calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% + (50% - 5px) *0) calc( 50% + (50% - 5px) * var(--s) *-1 ), calc(50% + (50% - 5px) *-0.95106) calc( 50% + (50% - 5px) * var(--s) *-0.30902 ), calc(50% + (50% - 5px) *-0.58779) calc( 50% + (50% - 5px) * var(--s) *0.80902 ), calc(50% + (50% - 5px) *0.58779) calc( 50% + (50% - 5px) * var(--s) *0.80902 ), calc(50% + (50% - 5px) *0.95106) calc( 50% + (50% - 5px) * var(--s) *-0.30902 ), calc(50% + (50% - 5px) *0) calc( 50% + (50% - 5px) * var(--s) *-1 );
+    --p-fin: calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% * (1 + 0.95106)) calc(50% * (1 + var(--s) *-0.30902)), calc(50% * (1 + 0.58779)) calc(50% * (1 + var(--s) *0.80902)), calc(50% * (1 + -0.58779)) calc(50% * (1 + var(--s) *0.80902)), calc(50% * (1 + -0.95106)) calc(50% * (1 + var(--s) *-0.30902)), calc(50% * (1 + 0)) calc(50% * (1 + var(--s) *-1)), calc(50% + (50% - 50%) *0) calc( 50% + (50% - 50%) * var(--s) *-1 ), calc(50% + (50% - 50%) *-0.95106) calc( 50% + (50% - 50%) * var(--s) *-0.30902 ), calc(50% + (50% - 50%) *-0.58779) calc( 50% + (50% - 50%) * var(--s) *0.80902 ), calc(50% + (50% - 50%) *0.58779) calc( 50% + (50% - 50%) * var(--s) *0.80902 ), calc(50% + (50% - 50%) *0.95106) calc( 50% + (50% - 50%) * var(--s) *-0.30902 ), calc(50% + (50% - 50%) *0) calc( 50% + (50% - 50%) * var(--s) *-1 );
+  }
+  
+  .inf {
+    --s0: -1;
+  }
+  
+  .mid {
+    --s0: 0;
+  }
+  
+  .sup {
+    --s0: 1;
+  }
+  
+  .cup {
+    --b1: 1;
+  }
+  
+  .lat {
+    --b1: 0;
+  }
+  
+  @keyframes exp3d {
+    0% {
+      transform: scale3d(0, 0, 0);
+    }
+    25%,
+      100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  @keyframes exp2d {
+    0%,
+      25% {
+      transform: var(--dir) translatez(var(--z-ini)) scale(var(--f-ini));
+    }
+    50%,
+      75% {
+      transform: var(--dir) translatez(var(--z-mid)) scale(var(--f-mid));
+      animation-timing-function: cubic-bezier(0.21, 1, 0.32, 1);
+    }
+    100% {
+      transform: var(--dir) translatez(var(--z-fin)) scale(var(--f-fin));
+    }
+  }
+  @keyframes fade {
+    0%,
+      87.5% {
+      opacity: 0.99;
+    }
+    100% {
+      opacity: 0.01;
+    }
+  }
+  @keyframes hole {
+    0%,
+      25% {
+      clip-path: polygon(var(--p-ini));
+      animation-timing-function: ease-out;
+    }
+    50%,
+      75% {
+      clip-path: polygon(var(--p-mid));
+    }
+    100% {
+      clip-path: polygon(var(--p-fin));
+    }
+  }
+  @keyframes shade {
+    to {
+      opacity: 0.001;
+    }
+  }
+  
